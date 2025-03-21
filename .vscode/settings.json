@@ -5,7 +5,7 @@
     "editor.defaultFormatter": "ms-dotnettools.csharp"
   },
   "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.insertSpaces": false,
   "editor.detectIndentation": true,
   "editor.formatOnType": true,

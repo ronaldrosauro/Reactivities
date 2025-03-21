@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddCors();
 builder.Services.AddDbContext<AppDBContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -13,10 +14,13 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-
+    
 }
+app.UseCors(cfg => cfg.AllowAnyHeader()
+    .AllowAnyMethod()
+    .WithOrigins("https://localhost:3000", "http://localhost:3000"));
 
 app.MapControllers();
 
